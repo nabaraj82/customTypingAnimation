@@ -1,10 +1,10 @@
 import React from 'react'
-import TypingEffect from './assets/TypingEffect'
+import TypingEffect from './TypingEffect'
 
 const App = () => {
   return (
     <div>
-      <TypingEffect text="Hello World" />
+      <TypingEffect text="Heello World" />
     </div>
   )
 }
