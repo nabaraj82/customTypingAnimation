@@ -32,7 +32,7 @@ const TypingEffect = ({phrase}) => {
       const clearTimeID = setTimeout(()=>{
         setText(phrase.slice(0,backwardIndex))
         setBackwardIndex(backwardIndex-1)
-      },10)
+      },8)
       return () =>{
         clearTimeout(clearTimeID)
       }
@@ -40,11 +40,6 @@ const TypingEffect = ({phrase}) => {
       setForwardIndex(0)
     }
   },[backwardIndex])
-  setInterval(()=>{
-    if(cursor){
-
-    }
-  })
   setTimeout(()=>{
     if(cursor){
       setCursor(false)
@@ -53,7 +48,7 @@ const TypingEffect = ({phrase}) => {
     }
   },500)
   return (
-    <h1 className='text-red-900 flex flex-row'>{text}<span className={`${cursor ? styles.display: styles.hidden}`}>|</span></h1>
+    <h1 className='text-red-900 text-lg	 flex flex-row	'>{text}<span className={`${cursor ? styles.display: styles.hidden}`}>|</span></h1>
   )
 }
 
