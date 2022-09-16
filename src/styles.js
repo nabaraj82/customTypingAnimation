@@ -1,4 +1,4 @@
 export const styles ={
-    hidden:"hidden",
-    display:"flex"
+    hidden:"opacity-0",
+    display:"opacity-100"
 }
