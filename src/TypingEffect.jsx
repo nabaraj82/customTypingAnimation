@@ -53,7 +53,7 @@ const TypingEffect = ({phrase}) => {
     }
   },500)
   return (
-    <div className='text-red-900 flex flex-row'>{text}<span className={`${cursor ? styles.display: styles.hidden}`}>|</span></div>
+    <h1 className='text-red-900 flex flex-row'>{text}<span className={`${cursor ? styles.display: styles.hidden}`}>|</span></h1>
   )
 }
 
