@@ -1,28 +1,33 @@
-import React from 'react'
-import { useEffect } from 'react';
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
-const TypingEffect = ({text}) => {
-    const [currentText, setCurrentText] = useState('');
-    console.log(currentText)
-    
-    useEffect(() => {
-        printText(text)
-    },[text])
-    let index =0;
-    const printText = (text) =>{ 
-        console.log(text.charAt(index))
-        setCurrentText (value => value + text.charAt(index));
-        index = index+1;
-        setTimeout(() => {
-        printText(text)
-        }, 1000);
+const TypingEffect = ({phrase}) => {
+  const [text, setText] = useState('')
+  const [forwardIndex, setForwardIndex] = useState(0)
+  const [backwardIndex, setBackwardIndex] = useState(0)
+  useEffect(()=>{
+    if(forwardIndex<phrase.length){
+
+      setTimeout(()=>{
+        setText(text+phrase[forwardIndex])
+      setForwardIndex(forwardIndex+1)
+      },200)
+    }else{
+        setBackwardIndex(phrase.length)
     }
-   
+  },[forwardIndex])
+  useEffect(()=>{
+    if(backwardIndex >= 0){
+      setTimeout(()=>{
+        setText(phrase.slice(0,backwardIndex))
+        setBackwardIndex(backwardIndex-1)
+      },100)
+    }else{
+      setForwardIndex(0)
+    }
+  },[backwardIndex])
   return (
-    <div>{
-        currentText
-    }</div>
+    <div>{text}</div>
   )
 }
 

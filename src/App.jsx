@@ -4,7 +4,7 @@ import TypingEffect from './assets/TypingEffect'
 const App = () => {
   return (
     <div>
-      <TypingEffect text="Hello World" />
+      <TypingEffect phrase="Hello World" />
     </div>
   )
 }
