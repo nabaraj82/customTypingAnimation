@@ -5,23 +5,36 @@ const TypingEffect = ({phrase}) => {
   const [text, setText] = useState('')
   const [forwardIndex, setForwardIndex] = useState(0)
   const [backwardIndex, setBackwardIndex] = useState(0)
+  // writing text with time interval
   useEffect(()=>{
     if(forwardIndex<phrase.length){
-
-      setTimeout(()=>{
+     const writingTimeID = setTimeout(()=>{
         setText(text+phrase[forwardIndex])
       setForwardIndex(forwardIndex+1)
-      },200)
+      },50)
+      return () => {
+        clearTimeout(writingTimeID)
+      }
     }else{
-        setBackwardIndex(phrase.length)
+       const delyTimeID = setTimeout(()=>{
+          setBackwardIndex(phrase.length)
+        },3000)
+        return () =>{
+          clearTimeout(delyTimeID)
+        }
     }
+    
   },[forwardIndex])
+  //deleteing text with time interval
   useEffect(()=>{
     if(backwardIndex >= 0){
-      setTimeout(()=>{
+      const clearTimeID = setTimeout(()=>{
         setText(phrase.slice(0,backwardIndex))
         setBackwardIndex(backwardIndex-1)
-      },100)
+      },10)
+      return () =>{
+        clearTimeout(clearTimeID)
+      }
     }else{
       setForwardIndex(0)
     }
